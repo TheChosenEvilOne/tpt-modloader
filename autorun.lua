@@ -1,7 +1,7 @@
 
 --config might break with updates, scripts must have modID_managerVersion variable
 local version = 1 
-local manager_folder = "tmm"
+local manager_folder = "tml"
 local mod_folder = "mods"
 local module_folder = "mods"
 local separator = '\\'
@@ -53,4 +53,5 @@ end
 
 modules = getFiles(module_folder)
 mods = getFiles(mod_folder)
+loadFromTable(mods)
 tpt.register_keypress(key_press_handler) 

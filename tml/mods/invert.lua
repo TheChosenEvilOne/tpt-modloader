@@ -21,7 +21,7 @@ function invert_onDisable()
   print("NYI")
 end
 
-local function invert()
+local function invert(window)
   for i in sim.parts() do
     local red, gre, blu, alp = gfx.getColors(sim.partProperty(i,"dcolour"))
     if alp == 0 then
@@ -57,7 +57,7 @@ end
 function invert_test()
   local window = Window:new(-1, -1, 91, 26)
   local invertButton = Button:new(5, 5, 60, 16, "Invert")
-  invertButton:action(invert)
+  invertButton:action(invert(window))
   
   
   local closeButton = Button:new(70, 5, 16, 16, "X")
