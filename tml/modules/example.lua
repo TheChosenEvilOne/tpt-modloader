@@ -1,26 +1,25 @@
 -- Example library module
 
-local metadata = {}
-metadata["name"] = "Example Library"
-metadata["id"] = "examplib"
-metadata["requires"] = "tml:1"
-metadata["type"] = "library"
-
 local examplib = {}
+examplib.metadata = {}
+examplib.metadata["name"] = "Example Library"
+examplib.metadata["id"] = "examplib"
+examplib.metadata["requires"] = "tml:1"
+examplib.metadata["type"] = "library"
 
-function getInfo()
+function examplib.getInfo()
   return metadata
 end
 
-function onLoad()
+function examplib.onLoad()
   print("NYI")
 end
 
-function onDisable()
+function examplib.onDisable()
   print("NYI")
 end
 
-examplib["cosFunc"] = function (number)
+function examplib.cosFunc (number)
     return cos(number)
 end
 

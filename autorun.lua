@@ -3,7 +3,7 @@
 local version = 1 
 local manager_folder = "tml"
 local mod_folder = "mods"
-local module_folder = "mods"
+local module_folder = "modules"
 local separator = '\\'
 local mods = {}
 local modules = {}
@@ -20,8 +20,12 @@ modifiers[4352] = "alt"
 
 KEYBINDS = {}
 
-local function key_press_handler(key, nkey, modifier, event)
-  print("NYI")
+local function keyPressHandler(key, nkey, modifier, event)
+  for _,v in pairs(KEYBINDS) do
+    for bind,func in pairs(v) do
+      func()
+    end
+  end
 end
 
 local function getFiles(folder)
@@ -44,14 +48,17 @@ local function getFiles(folder)
 end
 
 local function loadFromTable(load_table)
-  --anything else?
-  
-  for key, value in pairs(load_table) do
-    dofile(value)
+  for _, value in pairs(load_table) do
+    loaded = dofile(value)
+    if loaded then
+      loaded.onLoad()
+      print("Loaded: "..loaded.metadata.name)
+    end
   end
 end
 
 modules = getFiles(module_folder)
 mods = getFiles(mod_folder)
+loadFromTable(modules)
 loadFromTable(mods)
-tpt.register_keypress(key_press_handler) 
+tpt.register_keypress(keyPressHandler) 

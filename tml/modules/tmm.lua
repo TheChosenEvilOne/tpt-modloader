@@ -4,24 +4,27 @@
 --
 -- This also works as an example extension module
 
-local metadata = {}
-metadata["name"] = "The Powder Toy Mod Manager"
-metadata["id"] = "tmm"
-metadata["requires"] = "tml:1"
-metadata["type"] = "extension"
+local tmm = {}
+tmm.metadata = {}
+tmm.metadata["name"] = "The Powder Toy Mod Manager"
+tmm.metadata["id"] = "tmm"
+tmm.metadata["requires"] = "tml:1"
+tmm.metadata["type"] = "extension"
 
-function getInfo()
+function tmm.getInfo()
   return metadata
 end
 
-function onLoad()
+function tmm.onLoad()
   print("NYI")
 end
 
-function onDisable()
+function tmm.onDisable()
   print("NYI")
 end
 
 local function main()
   print("NYI")
 end
+
+return tmm

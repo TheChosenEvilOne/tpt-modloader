@@ -3,25 +3,21 @@
 --Copyright: no
 --License: IDK
 
-local metadata = {}
-metadata["name"] = "Deco Colo(u)r invert script"
-metadata["id"] = "invert"
-metadata["requires"] = "tml:1"
+local invert = {}
+invert.metadata = {}
+invert.metadata["name"] = "Deco Colo(u)r invert script"
+invert.metadata["id"] = "invert"
+invert.metadata["requires"] = "tml:1"
 
-function invert_getInfo()
-  return metadata
+function invert.onLoad ()
+  tmlAPI.registerKey("i","",1,invert_test)
 end
 
-function invert_onLoad()
-  print("NYI")
-  --register keybind to 
-end
-
-function invert_onDisable()
+function invert.onDisable ()
   print("NYI")
 end
 
-local function invert(window)
+local function invertFunc(window)
   for i in sim.parts() do
     local red, gre, blu, alp = gfx.getColors(sim.partProperty(i,"dcolour"))
     if alp == 0 then
@@ -57,7 +53,7 @@ end
 function invert_test()
   local window = Window:new(-1, -1, 91, 26)
   local invertButton = Button:new(5, 5, 60, 16, "Invert")
-  invertButton:action(invert(window))
+  invertButton:action(function () invertFunc(window) end)
   
   
   local closeButton = Button:new(70, 5, 16, 16, "X")
@@ -69,3 +65,5 @@ function invert_test()
   window:addComponent(invertButton)  
   interface.showWindow(window)
 end
+
+return invert
