@@ -10,7 +10,7 @@ invert.metadata["id"] = "invert"
 invert.metadata["requires"] = "tml:1"
 
 function invert.onLoad ()
-  tmlAPI.registerKey("i","",1,invert_test)
+  tmlAPI.registerKey("i","alt",1,invert_test)
 end
 
 function invert.onDisable ()

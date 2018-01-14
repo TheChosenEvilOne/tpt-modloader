@@ -24,9 +24,20 @@ function tmlAPI.registerKey(key,modifier,event,func)
   if (not KEYBINDS[key.."_"..modifier.."_"..tostring(event)]) then
     local bind = {}
     bind[key.."_"..modifier.."_"..tostring(event)] = func
-    print(tostring(func))
     table.insert(KEYBINDS,bind)
   end
+end
+
+function tmlAPI.splitStr(inputString, separator)
+        if separator == nil then
+                separator = "%s"
+        end
+        local t={} ; i=1
+        for str in string.gmatch(inputString, "([^"..separator.."]+)") do
+                t[i] = str
+                i = i + 1
+        end
+        return t
 end
 
 return tmlAPI

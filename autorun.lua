@@ -11,7 +11,7 @@ local active_mods = {}
 local active_modules = {}
 local modifiers = {}
 
-modifiers[4096] = ""
+modifiers[4096] = "none"
 modifiers[4160] = "ctrl"
 modifiers[4097] = "shift"
 modifiers[4352] = "alt"
@@ -23,7 +23,10 @@ KEYBINDS = {}
 local function keyPressHandler(key, nkey, modifier, event)
   for _,v in pairs(KEYBINDS) do
     for bind,func in pairs(v) do
-      func()
+      tableOut = tmlAPI.splitStr(bind,"_")
+      if tableOut[1] == key and tonumber(tableOut[3]) == event then
+        func()
+      end
     end
   end
 end
