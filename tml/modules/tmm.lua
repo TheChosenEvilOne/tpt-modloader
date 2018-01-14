@@ -1,21 +1,24 @@
 -- The Powder Toy Mod Manager
 -- 
 -- This file will be a module for TML which will add UI and mod managing properties
+--
+-- This also works as an example extension module
 
 local metadata = {}
 metadata["name"] = "The Powder Toy Mod Manager"
 metadata["id"] = "tmm"
 metadata["requires"] = "tml:1"
+metadata["type"] = "extension"
 
-function tmm_getInfo()
+function getInfo()
   return metadata
 end
 
-function tmm_onLoad()
+function onLoad()
   print("NYI")
 end
 
-function tmm_onDisable()
+function onDisable()
   print("NYI")
 end
 

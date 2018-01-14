@@ -1,5 +1,5 @@
 - [ ] Load modules from tml/modules/ (API extensions, libraries etc)
-- [ ] Basic API
+- [ ] Basic API (element registering, keybind registering etc)
 - [ ] Mod loading
 - [ ] Load order (module2->mod1->module1->mod2)
 - [ ] Other stuff

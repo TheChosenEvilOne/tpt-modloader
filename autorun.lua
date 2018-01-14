@@ -2,10 +2,13 @@
 --config might break with updates, scripts must have modID_managerVersion variable
 local version = 1 
 local manager_folder = "tmm"
-local mods_folder = "mods"
+local mod_folder = "mods"
+local module_folder = "mods"
 local separator = '\\'
 local mods = {}
+local modules = {}
 local active_mods = {}
+local active_modules = {}
 local modifiers = {}
 
 modifiers[4096] = ""
@@ -22,7 +25,7 @@ local function key_press_handler(key, nkey, modifier, event)
 end
 
 local function getFiles(folder)
-  local directory = manager_folder.."/"..mods_folder
+  local directory = manager_folder.."/"..folder
   local dirlist = fs.list(directory)
   if not dirlist then return end
   local result = {}s
@@ -30,7 +33,7 @@ local function getFiles(folder)
     local file = directory.."/"..v
     if fs.isFile(file) then
       if file:find("%.lua$") then
-        local toinsert = file:sub(#folder) --which number?
+        local toinsert = file:sub(#directory+0) --which number?
         if OS == "WIN32" or OS == "WIN64" then
           toinsert = toinsert:gsub("/", "\\")
         end
@@ -46,4 +49,5 @@ local function main()
 end
 
 main()
-getMods()
+modules = getFiles(module_folder)
+mods = getFiles(mod_folder)
