@@ -1,4 +1,5 @@
-- [ ] Make TPT ModLoader/ModManager modular
-- [ ] Create API
-- [ ] Make it load mods
+- [ ] Load modules from tml/modules/ (API extensions, libraries etc)
+- [ ] Basic API
+- [ ] Mod loading
+- [ ] Load order (module2->mod1->module1->mod2)
 - [ ] Other stuff
