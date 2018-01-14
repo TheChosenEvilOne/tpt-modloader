@@ -17,32 +17,28 @@ modifiers[4352] = "alt"
 
 KEYBINDS = {}
 
-local function windowUI()
-  print("test")
-end
-
 local function key_press_handler(key, nkey, modifier, event)
-  if event~=1 then return end
-  
-  
+  print("NYI")
 end
 
-local function getMods()
+local function getFiles(folder)
   local directory = manager_folder.."/"..mods_folder
   local dirlist = fs.list(directory)
   if not dirlist then return end
+  local result = {}s
   for i,v in ipairs(dirlist) do
     local file = directory.."/"..v
     if fs.isFile(file) then
       if file:find("%.lua$") then
-        local toinsert = file:sub(#manager_folder+2+#mods_folder+1)
+        local toinsert = file:sub(#folder) --which number?
         if OS == "WIN32" or OS == "WIN64" then
-          toinsert = toinsert:gsub("/", "\\") --not actually required
+          toinsert = toinsert:gsub("/", "\\")
         end
-        table.insert(mods, toinsert)
+        table.insert(result, toinsert)
       end
     end
   end
+  return result
 end
 
 local function main()

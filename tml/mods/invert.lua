@@ -3,11 +3,29 @@
 --Copyright: no
 --License: IDK
 
+local metadata = {}
+metadata["name"] = "Deco Colo(u)r invert script"
+metadata["id"] = "invert"
+metadata["requires"] = "tml:1"
+
+function invert_getInfo()
+  return metadata
+end
+
+function invert_onLoad()
+  print("NYI")
+  --register keybind to 
+end
+
+function invert_onDisable()
+  print("NYI")
+end
+
 local function invert()
   for i in sim.parts() do
-    red, gre, blu, alp = gfx.getColors(sim.partProperty(i,"dcolour"))
+    local red, gre, blu, alp = gfx.getColors(sim.partProperty(i,"dcolour"))
     if alp == 0 then
-      elemID = sim.partProperty(i,sim.FIELD_TYPE)
+      local elemID = sim.partProperty(i,sim.FIELD_TYPE)
       red,gre,blu,alp=gfx.getColors(elem.property(elemID,"Color"))
       alp = 0xFF
     end
@@ -30,29 +48,24 @@ local function invert()
     if string.len(alp) ~= 2 then
       alp = "0"..alp
     end
-    result = tonumber(alp..red..gre..blu,16)
+    local result = tonumber(alp..red..gre..blu,16)
     sim.partProperty(i,"dcolour", result)
   end
-  interface.closeWindow(testWindow)
+  interface.closeWindow(window)
 end
 
-function window(key, nkey, modifier, event)
-  if (key ~= "i") then
-    return true
-  end
-  testWindow = Window:new(-1, -1, 91, 26)
-  local testButton = Button:new(5, 5, 60, 16, "Invert")
-  testButton:action(invert)
+function invert_test()
+  local window = Window:new(-1, -1, 91, 26)
+  local invertButton = Button:new(5, 5, 60, 16, "Invert")
+  invertButton:action(invert)
   
   
   local closeButton = Button:new(70, 5, 16, 16, "X")
  
-  closeButton:action(function() interface.closeWindow(testWindow) end)
+  closeButton:action(function() interface.closeWindow(window) end)
   
-  testWindow:onTryExit(function() interface.closeWindow(testWindow) end)
-  testWindow:addComponent(closeButton)
-  testWindow:addComponent(testButton)  
-  interface.showWindow(testWindow)
+  window:onTryExit(function() interface.closeWindow(window) end)
+  window:addComponent(closeButton)
+  window:addComponent(invertButton)  
+  interface.showWindow(window)
 end
-
-tpt.register_keypress(window) 

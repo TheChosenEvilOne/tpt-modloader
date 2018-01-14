@@ -2,7 +2,7 @@
 -- 
 -- This file will be a module for TML which will add UI and mod managing properties
 
-local table metadata = {}
+local metadata = {}
 metadata["name"] = "The Powder Toy Mod Manager"
 metadata["id"] = "tmm"
 metadata["requires"] = "tml:1"
