@@ -28,26 +28,29 @@ local function getFiles(folder)
   local directory = manager_folder.."/"..folder
   local dirlist = fs.list(directory)
   if not dirlist then return end
-  local result = {}s
+  local result = {}
   for i,v in ipairs(dirlist) do
     local file = directory.."/"..v
     if fs.isFile(file) then
       if file:find("%.lua$") then
-        local toinsert = file:sub(#directory+0) --which number?
         if OS == "WIN32" or OS == "WIN64" then
           toinsert = toinsert:gsub("/", "\\")
         end
-        table.insert(result, toinsert)
+        table.insert(result, file)
       end
     end
   end
   return result
 end
 
-local function main()
-  tpt.register_keypress(key_press_handler) 
+local function loadFromTable(load_table)
+  --anything else?
+  
+  for key, value in pairs(load_table) do
+    dofile(value)
+  end
 end
 
-main()
 modules = getFiles(module_folder)
 mods = getFiles(mod_folder)
+tpt.register_keypress(key_press_handler) 
