@@ -121,7 +121,7 @@ function tmm.onLoad()
     for x = 1, 13 do
       for y = 1, 13 do
         if icon[y][x] ~= 0 then
-          graphics.drawRect(613 + x, 97 + y, 1, 1)
+          tpt.drawpixel(613 + x, 97 + y)
         end
       end
     end
