@@ -94,8 +94,40 @@ function tmm.onLoad()
   testWindow:addComponent(testSlider)
   testWindow:addComponent(textboxInfo)
   testWindow:addComponent(closeButton)
-  
-  interface.showWindow(testWindow)
+
+  local button = Button:new(613, 97, 15, 15, "")
+  button:action(
+    function(sender)
+      interface.showWindow(testWindow)
+    end
+  )
+  -- hell
+  local icon = {
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+    {0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+    {0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+    {0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0},
+    {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+    {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+  }
+  local function step()
+    for x = 1, 13 do
+      for y = 1, 13 do
+        if icon[y][x] ~= 0 then
+          graphics.drawRect(613 + x, 97 + y, 1, 1)
+        end
+      end
+    end
+  end
+  interface.addComponent(button)
+  tpt.register_step(step)
 end
 
 function tmm.onDisable()
