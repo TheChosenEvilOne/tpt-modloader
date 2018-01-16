@@ -1,5 +1,14 @@
-- [ ] Load modules from tml/modules/ (API extensions, libraries etc)
-- [ ] Basic API (element registering, keybind registering etc)
-- [ ] Mod loading
+- [ ] Basic API
+    - [x] Keybind registering
+    - [ ] Element registering
+    - [ ] UI
+    - [ ] Other
+- [x] Loading
+    - [x] Library modules
+    - [x] Mods
+    - [ ] Extension modules
+- [ ] UI (use TML UI API?)
+    - [ ] Mod Manager
+    - [ ] Other
 - [ ] Load order (module2->mod1->module1->mod2)
 - [ ] Other stuff
