@@ -40,4 +40,6 @@ function tmlAPI.splitStr(inputString, separator)
         return t
 end
 
+--TODO: Write config API
+
 return tmlAPI
