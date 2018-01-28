@@ -54,7 +54,6 @@ function tmlAPI.util.log(id,text)
   tpt.log(id..": "..text)
 end
 
---TODO: Write config API
 tmlAPI.config = {}
 
 function tmlAPI.config.getConfig(id)
@@ -75,6 +74,17 @@ end
 
 function tmlAPI.config.setConfigValue(id,key,value)
   CONFIGS[id][key] = value
+end
+
+tmlAPI.ui = {}
+tmlAPI.ui.windowList = {}
+
+function tmlAPI.ui.createWindow(id,x,y,width,height)
+  local wi = {}
+  local w = Window:new(x,y,width,height)
+  wi[id] = w
+  table.insert(tmlAPI.ui.windowList,wi)
+  return w
 end
 
 return tmlAPI

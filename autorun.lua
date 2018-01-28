@@ -57,8 +57,9 @@ local function loadFromTable(load_table)
   for _, value in pairs(load_table) do
     loaded = dofile(value)
     if loaded then
+      loaded.metadata.uid=loaded.metadata.id.."-"..tostring(math.random()*10):gsub("%.","")
       loaded.onLoad()
-      print("Loaded: "..loaded.metadata.name)
+      print("Loaded: "..loaded.metadata.name.." UID: "..loaded.metadata.uid)
     end
   end
 end
@@ -75,6 +76,13 @@ local function loadConfigsFromTable(load_table)
   end
   return files
 end
+
+--START random generation
+
+math.randomseed(os.time()) --TODO: add more random numbers to seed
+math.random(); math.random(); math.random() --dump few randoms
+
+--END random generation
 
 modules = getFiles(module_folder)
 mods = getFiles(mod_folder)

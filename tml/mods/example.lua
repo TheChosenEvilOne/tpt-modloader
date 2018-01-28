@@ -13,7 +13,7 @@ end
 function examplib.onLoad()
   
   -- Test Window
-  local testWindow = Window:new(-1, -1, 300, 200)
+  local testWindow = tmlAPI.ui.createWindow(examplib.metadata.uid,-1, -1, 300, 200)
   
   local currentY = 10
   

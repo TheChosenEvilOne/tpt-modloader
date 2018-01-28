@@ -51,7 +51,7 @@ local function invertFunc(window)
 end
 
 function invert_test()
-  local window = Window:new(-1, -1, 91, 26)
+  local window = tmlAPI.ui.createWindow(invert.metadata.uid,-1, -1, 91, 26)
   local invertButton = Button:new(5, 5, 60, 16, "Invert")
   invertButton:action(function () invertFunc(window) end)
   
