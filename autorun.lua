@@ -9,7 +9,6 @@ local config_folder = "configs"
 local separator = '\\'
 local mods = {}
 local modules = {}
-local configs = {}
 local active_mods = {}
 local active_modules = {}
 local modifiers = {}
@@ -22,6 +21,7 @@ modifiers[4352] = "alt"
 --Global variables
 
 KEYBINDS = {}
+configs = {}
 
 local function keyPressHandler(key, nkey, modifier, event)
   for _,v in pairs(KEYBINDS) do
@@ -82,5 +82,4 @@ configs = getFiles(config_folder)
 loadFromTable(modules)
 loadFromTable(mods)
 configs = loadConfigsFromTable(configs)
-print(configs.tml.disabled[1])
 tpt.register_keypress(keyPressHandler) 

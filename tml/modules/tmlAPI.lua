@@ -41,5 +41,12 @@ function tmlAPI.splitStr(inputString, separator)
 end
 
 --TODO: Write config API
+function tmlAPI.getConfigs()
+  return configs
+end
+
+function tmlAPI.setConfigs(config)
+  configs = config
+end
 
 return tmlAPI
