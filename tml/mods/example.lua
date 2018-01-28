@@ -1,19 +1,15 @@
 -- Example library module
 
-local examplib = {}
-examplib.metadata = {}
-examplib.metadata["name"] = "Example Mod"
-examplib.metadata["id"] = "exampmod"
-examplib.metadata["requires"] = "tml:1"
+local exampmod = {}
+exampmod.metadata = {}
+exampmod.metadata["name"] = "Example Mod"
+exampmod.metadata["id"] = "exampmod"
+exampmod.metadata["requires"] = "tml:1"
 
-function examplib.getInfo()
-  return metadata
-end
-
-function examplib.onLoad()
+function exampmod.onLoad()
   
   -- Test Window
-  local testWindow = tmlAPI.ui.createWindow(examplib.metadata.uid,-1, -1, 300, 200)
+  local testWindow = tmlAPI.ui.createWindow(exampmod.metadata.uid,-1, -1, 300, 200)
   
   local currentY = 10
   
@@ -126,12 +122,8 @@ function examplib.onLoad()
   tpt.register_step(step)
 end
 
-function examplib.onDisable()
+function exampmod.onDisable()
   print("NYI")
 end
 
-function examplib.cosFunc (number)
-    return cos(number)
-end
-
-return examplib
+return exampmod

@@ -5,7 +5,7 @@ examplib.metadata = {}
 examplib.metadata["name"] = "Example Library"
 examplib.metadata["id"] = "examplib"
 examplib.metadata["requires"] = "tml:1"
-examplib.metadata["type"] = "library"
+examplib.metadata["type"] = "module"
 
 function examplib.getInfo()
   return metadata

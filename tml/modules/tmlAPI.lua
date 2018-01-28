@@ -23,10 +23,10 @@ end
 tmlAPI.util = {}
 
 function tmlAPI.util.registerKeyME(key,modifier,event,func)
-  if (not KEYBINDS[key.."_"..modifier.."_"..tostring(event)]) then
+  if (not tml.keybinds[key.."_"..modifier.."_"..tostring(event)]) then
     local bind = {}
     bind[key.."_"..modifier.."_"..tostring(event)] = func
-    table.insert(KEYBINDS,bind)
+    table.insert(tml.keybinds,bind)
   end
 end
 
@@ -85,6 +85,14 @@ function tmlAPI.ui.createWindow(id,x,y,width,height)
   wi[id] = w
   table.insert(tmlAPI.ui.windowList,wi)
   return w
+end
+
+tmlAPI.element = {}
+tmlAPI.element.elementList = {}
+
+function tmlAPI.element.registerElement()
+  print("TBI")
+  --register element and add to elementList and use UID
 end
 
 return tmlAPI

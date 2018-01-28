@@ -9,7 +9,7 @@ tmm.metadata = {}
 tmm.metadata["name"] = "The Powder Toy Mod Manager"
 tmm.metadata["id"] = "tmm"
 tmm.metadata["requires"] = "tml:1"
-tmm.metadata["type"] = "extension"
+tmm.metadata["type"] = "module"
 
 function tmm.onLoad()
   tmlAPI.util.log(tmm.metadata["id"],"onLoad, NYI")

@@ -1,4 +1,5 @@
 local TOML = require("tml.modules.toml")
+local UUID = require("tml.extensions.uuid")
 
 --config might break with updates, scripts must have modID_managerVersion variable
 local version = 1 
@@ -7,8 +8,6 @@ local mod_folder = "mods"
 local module_folder = "modules"
 local config_folder = "configs"
 local separator = '\\'
-local mods = {}
-local modules = {}
 local active_mods = {}
 local active_modules = {}
 local modifiers = {}
@@ -20,8 +19,11 @@ modifiers[4352] = "alt"
 
 --Global variables
 
-KEYBINDS = {}
-CONFIGS = {}
+tml = {}
+tml.keybinds = {}
+tml.configs = {}
+tml.mods = {}
+tml.modules = {}
 
 local function keyPressHandler(key, nkey, modifier, event)
   for _,v in pairs(KEYBINDS) do
@@ -57,9 +59,24 @@ local function loadFromTable(load_table)
   for _, value in pairs(load_table) do
     loaded = dofile(value)
     if loaded then
-      loaded.metadata.uid=loaded.metadata.id.."-"..tostring(math.random()*10):gsub("%.","")
-      loaded.onLoad()
-      print("Loaded: "..loaded.metadata.name.." UID: "..loaded.metadata.uid)
+      if loaded.metadata ~= nil then
+        loaded.metadata.uid=loaded.metadata.id.."-"..UUID()
+        if loaded.onLoad ~= nil then 
+          loaded.onLoad()
+        end
+        print("Loaded: "..loaded.metadata.name.." UID: "..loaded.metadata.uid)
+        if(loaded.metadata.type ~= "module") then
+          local modul = {}
+          modul[loaded.metadata.uid] = loaded
+          table.insert(tml.modules, modul)
+        else
+          local m = {}
+          m[loaded.metadata.uid] = loaded
+          table.insert(tml.mods, m)
+        end
+      else
+        print("Loaded unidentified file, please identify your file if you are a dev")
+      end
     end
   end
 end
