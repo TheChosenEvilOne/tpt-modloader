@@ -11,12 +11,8 @@ tmm.metadata["id"] = "tmm"
 tmm.metadata["requires"] = "tml:1"
 tmm.metadata["type"] = "extension"
 
-function tmm.getInfo()
-  return metadata
-end
-
 function tmm.onLoad()
-  print("NYI")
+  tmlAPI.util.log(tmm.metadata["id"],"onLoad, NYI")
 end
 
 function tmm.onDisable()

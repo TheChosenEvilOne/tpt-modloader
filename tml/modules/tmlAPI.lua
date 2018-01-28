@@ -13,7 +13,7 @@ tmlAPI.metadata["version"] = 1
 tmlAPI.metadata["type"] = "library"
 
 function tmlAPI.onLoad()
-  print("NYI")
+  tmlAPI.util.log(tmlAPI.metadata["id"],"onLoad, NYI")
 end
 
 function tmlAPI.onDisable()
@@ -48,6 +48,10 @@ function tmlAPI.util.splitStr(inputString, separator)
                 i = i + 1
         end
         return t
+end
+
+function tmlAPI.util.log(id,text)
+  tpt.log(id..": "..text)
 end
 
 --TODO: Write config API
