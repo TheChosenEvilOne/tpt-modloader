@@ -42,11 +42,11 @@ end
 
 --TODO: Write config API
 function tmlAPI.getConfigs()
-  return configs
+  return CONFIGS
 end
 
 function tmlAPI.setConfigs(config)
-  configs = config
+  CONFIGS = config
 end
 
 return tmlAPI

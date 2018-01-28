@@ -21,7 +21,7 @@ modifiers[4352] = "alt"
 --Global variables
 
 KEYBINDS = {}
-configs = {}
+CONFIGS = {}
 
 local function keyPressHandler(key, nkey, modifier, event)
   for _,v in pairs(KEYBINDS) do
@@ -78,8 +78,8 @@ end
 
 modules = getFiles(module_folder)
 mods = getFiles(mod_folder)
-configs = getFiles(config_folder)
+CONFIGS = getFiles(config_folder)
 loadFromTable(modules)
 loadFromTable(mods)
-configs = loadConfigsFromTable(configs)
+CONFIGS = loadConfigsFromTable(CONFIGS)
 tpt.register_keypress(keyPressHandler) 
