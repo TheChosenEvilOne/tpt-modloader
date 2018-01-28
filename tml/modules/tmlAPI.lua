@@ -20,7 +20,9 @@ function tmlAPI.onDisable()
   print("NYI")
 end
 
-function tmlAPI.registerKey(key,modifier,event,func)
+tmlAPI.util = {}
+
+function tmlAPI.util.registerKeyME(key,modifier,event,func)
   if (not KEYBINDS[key.."_"..modifier.."_"..tostring(event)]) then
     local bind = {}
     bind[key.."_"..modifier.."_"..tostring(event)] = func
@@ -28,7 +30,15 @@ function tmlAPI.registerKey(key,modifier,event,func)
   end
 end
 
-function tmlAPI.splitStr(inputString, separator)
+function tmlAPI.util.registerKeyM(key,modifier,func)
+  tmlAPI.util.registerKeyME(key,modifier,1,func)
+end
+
+function tmlAPI.util.registerKey(key,func)
+  tmlAPI.util.registerKeyM(key,"none",func)
+end
+
+function tmlAPI.util.splitStr(inputString, separator)
         if separator == nil then
                 separator = "%s"
         end
@@ -41,12 +51,26 @@ function tmlAPI.splitStr(inputString, separator)
 end
 
 --TODO: Write config API
-function tmlAPI.getConfigs()
+tmlAPI.config = {}
+
+function tmlAPI.config.getConfig(id)
+  return CONFIGS[id]
+end
+
+function tmlAPI.config.getConfigValue(id,key)
+  return CONFIGS[id][key]
+end
+
+function tmlAPI.config.getConfigs()
   return CONFIGS
 end
 
-function tmlAPI.setConfigs(config)
-  CONFIGS = config
+function tmlAPI.config.setConfig(id,config)
+  CONFIGS[id] = config
+end
+
+function tmlAPI.config.setConfigValue(id,key,value)
+  CONFIGS[id][key] = value
 end
 
 return tmlAPI

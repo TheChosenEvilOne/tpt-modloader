@@ -26,8 +26,8 @@ CONFIGS = {}
 local function keyPressHandler(key, nkey, modifier, event)
   for _,v in pairs(KEYBINDS) do
     for bind,func in pairs(v) do
-      tableOut = tmlAPI.splitStr(bind,"_")
-      if tableOut[1] == key and tonumber(tableOut[3]) == event then
+      tableOut = tmlAPI.util.splitStr(bind,"_")
+      if tableOut[1] == key and modifiers[modifier] == tableOut[2] and tonumber(tableOut[3]) == event then
         func()
       end
     end
@@ -79,7 +79,7 @@ end
 modules = getFiles(module_folder)
 mods = getFiles(mod_folder)
 CONFIGS = getFiles(config_folder)
+CONFIGS = loadConfigsFromTable(CONFIGS)
 loadFromTable(modules)
 loadFromTable(mods)
-CONFIGS = loadConfigsFromTable(CONFIGS)
 tpt.register_keypress(keyPressHandler) 

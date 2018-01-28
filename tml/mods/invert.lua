@@ -7,10 +7,10 @@ local invert = {}
 invert.metadata = {}
 invert.metadata["name"] = "Deco Colo(u)r invert script"
 invert.metadata["id"] = "invert"
-invert.metadata["requires"] = "tml:1"
+invert.metadata["requires"] = "tmlAPI:1"
 
 function invert.onLoad ()
-  tmlAPI.registerKey("i","alt",1,invert_test)
+  tmlAPI.util.registerKeyM(tmlAPI.config.getConfigValue(invert.metadata.id,"keybind"),"alt",invert_test)
 end
 
 function invert.onDisable ()
