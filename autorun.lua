@@ -1,12 +1,15 @@
+local TOML = require("tml.modules.toml")
 
 --config might break with updates, scripts must have modID_managerVersion variable
 local version = 1 
 local manager_folder = "tml"
 local mod_folder = "mods"
 local module_folder = "modules"
+local config_folder = "configs"
 local separator = '\\'
 local mods = {}
 local modules = {}
+local configs = {}
 local active_mods = {}
 local active_modules = {}
 local modifiers = {}
@@ -39,7 +42,7 @@ local function getFiles(folder)
   for i,v in ipairs(dirlist) do
     local file = directory.."/"..v
     if fs.isFile(file) then
-      if file:find("%.lua$") then
+      if file:find("%.lua$") or file:find("%.toml$") then
         if OS == "WIN32" or OS == "WIN64" then
           toinsert = toinsert:gsub("/", "\\")
         end
@@ -60,8 +63,23 @@ local function loadFromTable(load_table)
   end
 end
 
+local function loadConfigsFromTable(load_table)
+  local files = {}
+  for _, value in pairs(load_table) do
+    local f = assert(io.open(value, "rb"))
+    local content = f:read("*all")
+    f:close()
+    local name = value:match("([^/]+)$"):match("(%w+).(%w+)")
+    files[name] = TOML.parse(content)
+    print("Loaded config: "..name)
+  end
+  return files
+end
+
 modules = getFiles(module_folder)
 mods = getFiles(mod_folder)
+configs = getFiles(config_folder)
 loadFromTable(modules)
 loadFromTable(mods)
+configs = loadConfigsFromTable(configs)
 tpt.register_keypress(keyPressHandler) 
