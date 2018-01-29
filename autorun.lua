@@ -26,7 +26,7 @@ tml.mods = {}
 tml.modules = {}
 
 local function keyPressHandler(key, nkey, modifier, event)
-  for _,v in pairs(KEYBINDS) do
+  for _,v in pairs(tml.keybinds) do
     for bind,func in pairs(v) do
       tableOut = tmlAPI.util.splitStr(bind,"_")
       if tableOut[1] == key and modifiers[modifier] == tableOut[2] and tonumber(tableOut[3]) == event then
@@ -101,10 +101,10 @@ math.random(); math.random(); math.random() --dump few randoms
 
 --END random generation
 
-modules = getFiles(module_folder)
-mods = getFiles(mod_folder)
-CONFIGS = getFiles(config_folder)
-CONFIGS = loadConfigsFromTable(CONFIGS)
+local modules = getFiles(module_folder)
+local mods = getFiles(mod_folder)
+local configs = getFiles(config_folder)
+tml.configs = loadConfigsFromTable(configs)
 loadFromTable(modules)
 loadFromTable(mods)
 tpt.register_keypress(keyPressHandler) 
