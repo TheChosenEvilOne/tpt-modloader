@@ -21,6 +21,15 @@ function tmlAPI.onDisable()
 end
 
 tmlAPI.util = {}
+tmlAPI.util.steps = {}
+tmlAPI.util.step = (function()
+      for _,v in pairs(tmlAPI.util.steps) do
+        for _,func in pairs(v) do
+          func()
+        end
+      end
+    end)
+tpt.register_step(tmlAPI.util.step)
 
 function tmlAPI.util.registerKeyME(key,modifier,event,func)
   if (not tml.keybinds[key.."_"..modifier.."_"..tostring(event)]) then
@@ -51,7 +60,13 @@ function tmlAPI.util.splitStr(inputString, separator)
 end
 
 function tmlAPI.util.log(id,text)
+  --add better logging function, scrollable box?
   tpt.log(id..": "..text)
+end
+
+function tmlAPI.util.addStep(id,func)
+    local step = {id=func}
+    table.insert(tmlAPI.util.steps,step)
 end
 
 tmlAPI.config = {}

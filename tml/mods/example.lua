@@ -124,7 +124,7 @@ function exampmod.onLoad()
     tmlAPI.ui.drawList({"test", "12345", "hmmmmm"}, 100, 100, 1000, 1000, mousex, mousey)
   end
   interface.addComponent(button)
-  tpt.register_step(step)
+  tmlAPI.util.addStep(uid,step)
 end
 
 function exampmod.onDisable()
