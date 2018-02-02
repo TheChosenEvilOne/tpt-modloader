@@ -57,23 +57,23 @@ end
 tmlAPI.config = {}
 
 function tmlAPI.config.getConfig(id)
-  return CONFIGS[id]
+  return tml.configs[id]
 end
 
 function tmlAPI.config.getConfigValue(id,key)
-  return CONFIGS[id][key]
+  return tml.configs[id][key]
 end
 
 function tmlAPI.config.getConfigs()
-  return CONFIGS
+  return tml.configs
 end
 
 function tmlAPI.config.setConfig(id,config)
-  CONFIGS[id] = config
+  tml.configs[id] = config
 end
 
 function tmlAPI.config.setConfigValue(id,key,value)
-  CONFIGS[id][key] = value
+  tml.configs[id][key] = value
 end
 
 tmlAPI.ui = {}
