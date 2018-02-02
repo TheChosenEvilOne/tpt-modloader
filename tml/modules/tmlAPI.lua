@@ -87,6 +87,24 @@ function tmlAPI.ui.createWindow(id,x,y,width,height)
   return w
 end
 
+function tmlAPI.ui.drawList(list, x, y, w, h, mousex, mousey)
+  local oldx = x
+  local oldy = y
+  for _, e in ipairs(list) do
+    local width, height = graphics.textSize(e)
+    if y <= oldy + h then
+      if mousex >= x - 2 and mousex <= x + width + 3 and mousey >= y - 2 and mousey <= y + width + 3 then
+        graphics.drawRect(x - 2, y - 2, width + 3, height + 2)
+      end
+      graphics.drawText(x, y, e)
+      y = y + height + 1
+    else
+      break
+    end
+  end
+end
+
+
 tmlAPI.element = {}
 tmlAPI.element.elementList = {}
 

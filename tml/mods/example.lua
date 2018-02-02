@@ -12,6 +12,8 @@ function exampmod.onLoad()
   local testWindow = tmlAPI.ui.createWindow(exampmod.metadata.uid,-1, -1, 300, 200)
   
   local currentY = 10
+  local mousex = 0
+  local mousey = 0
   
   --Example label
   local testLabel = Label:new(10, currentY, (select(1, testWindow:size())/2)-20, 16, "This is a test label")
@@ -75,6 +77,8 @@ function exampmod.onLoad()
   testWindow:onMouseMove(
     function(x, y, dx, dy)
       testLabel:text("Mouse: "..x..", "..y)
+      mousex = x
+      mousey = y
     end
   )
   
@@ -117,6 +121,7 @@ function exampmod.onLoad()
         end
       end
     end
+    tmlAPI.ui.drawList({"test", "12345", "hmmmmm"}, 100, 100, 1000, 1000, mousex, mousey)
   end
   interface.addComponent(button)
   tpt.register_step(step)
