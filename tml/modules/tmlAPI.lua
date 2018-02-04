@@ -100,6 +100,22 @@ function tmlAPI.ui.createWindow(id,x,y,width,height)
   return w
 end
 
+function tmlAPI.ui.createButton(id, x, y, w, h, func, icon)
+  local button = Button:new(x, y, w, h, "")
+  button:action(func)
+  local function step()
+    for i = 1, #icon do
+      for j = 1, #icon[i] do
+        if icon[i][j] ~= 0 then
+          tpt.drawpixel(x + j, y + i)
+        end
+      end
+    end
+  end
+  tmlAPI.util.addStep(id, step)
+  return button
+end
+
 function tmlAPI.ui.drawList(list, x, y, w, h, mousex, mousey)
   local oldx = x
   local oldy = y

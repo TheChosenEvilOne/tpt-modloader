@@ -91,15 +91,11 @@ function exampmod.onLoad()
   testWindow:addComponent(textboxInfo)
   testWindow:addComponent(closeButton)
 
-  local button = Button:new(613, 97, 15, 15, "")
-  button:action(
+  local button = tmlAPI.ui.createButton(1337, 613, 97, 15, 15,
     function(sender)
       interface.showWindow(testWindow)
-    end
-  )
-  -- hell
-  local icon = {
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    end,
+    {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0},
     {0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0},
@@ -111,16 +107,10 @@ function exampmod.onLoad()
     {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0},
     {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
     {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-  }
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}
+  )
+
   local function step()
-    for x = 1, 13 do
-      for y = 1, 13 do
-        if icon[y][x] ~= 0 then
-          tpt.drawpixel(613 + x, 97 + y)
-        end
-      end
-    end
     tmlAPI.ui.drawList({"test", "12345", "hmmmmm"}, 100, 100, 1000, 1000, mousex, mousey)
   end
   interface.addComponent(button)
