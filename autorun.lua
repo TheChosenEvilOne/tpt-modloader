@@ -1,4 +1,4 @@
-local TOML = require("tml.modules.toml")
+local TOML = require("tml.extensions.toml")
 local UUID = require("tml.extensions.uuid")
 
 --config might break with updates, scripts must have modID_managerVersion variable
