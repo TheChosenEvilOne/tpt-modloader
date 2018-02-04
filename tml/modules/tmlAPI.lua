@@ -10,7 +10,7 @@ tmlAPI.metadata["name"] = "The Powder Toy Mod Loader API"
 tmlAPI.metadata["id"] = "tmlAPI"
 tmlAPI.metadata["requires"] = ""
 tmlAPI.metadata["version"] = 1
-tmlAPI.metadata["type"] = "library"
+tmlAPI.metadata["type"] = "module"
 
 function tmlAPI.onLoad()
   tmlAPI.util.log(tmlAPI.metadata["id"],"onLoad, NYI")
@@ -24,9 +24,7 @@ tmlAPI.util = {}
 tmlAPI.util.steps = {}
 tmlAPI.util.step = (function()
       for _,v in pairs(tmlAPI.util.steps) do
-        for _,func in pairs(v) do
-          func()
-        end
+        v()
       end
     end)
 tpt.register_step(tmlAPI.util.step)
@@ -65,8 +63,8 @@ function tmlAPI.util.log(id,text)
 end
 
 function tmlAPI.util.addStep(id,func)
-    local step = {id=func}
-    table.insert(tmlAPI.util.steps,step)
+    print(id)
+    tmlAPI.util.steps[id] = func
 end
 
 tmlAPI.config = {}

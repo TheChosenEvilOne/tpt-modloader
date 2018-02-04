@@ -4,7 +4,8 @@ local examplib = {}
 examplib.metadata = {}
 examplib.metadata["name"] = "Example Library"
 examplib.metadata["id"] = "examplib"
-examplib.metadata["requires"] = "tml:1"
+examplib.metadata["requires"] = "tmlAPI:1"
+examplib.metadata["version"] = 1
 examplib.metadata["type"] = "module"
 
 function examplib.getInfo()

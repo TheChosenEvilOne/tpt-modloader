@@ -8,7 +8,8 @@ local tmm = {}
 tmm.metadata = {}
 tmm.metadata["name"] = "The Powder Toy Mod Manager"
 tmm.metadata["id"] = "tmm"
-tmm.metadata["requires"] = "tml:1"
+tmm.metadata["requires"] = "tmlAPI:1"
+tmm.metadata["version"] = 1
 tmm.metadata["type"] = "module"
 
 function tmm.onLoad()

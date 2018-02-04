@@ -2,37 +2,24 @@
 --Cracker64's Powder Toy Multiplayer
 --I highly recommend to use my Autorun Script Manager
 
-discordRPC = require "discordRPC"
+local TPTMPm = {}
+TPTMPm.metadata = {}
+TPTMPm.metadata["name"] = "The Powder Toy MultiPlayer script"
+TPTMPm.metadata["id"] = "tptmp"
+TPTMPm.metadata["requires"] = "tmlAPI:1"
 
-local APPLICATION_ID = "409637524596588544"
-
-function discordRPC.ready()
-    print("Discord: ready")
+function TPTMPm.onLoad ()
+  print("NYI")
+  TPTMPm.mp()
 end
 
-function discordRPC.disconnected(errorCode, message)
-    print(string.format("Discord: disconnected (%d: %s)", errorCode, message))
-end
-
-function discordRPC.errored(errorCode, message)
-    print(string.format("Discord: error (%d: %s)", errorCode, message))
-end
-
-local tptmp = {}
-tptmp.metadata = {}
-tptmp.metadata["name"] = "tptmp script"
-tptmp.metadata["id"] = "tptmp"
-tptmp.metadata["requires"] = "tmlAPI:1"
-
-function invert.onLoad ()
+function TPTMPm.onDisable ()
   print("NYI")
 end
 
-function invert.onDisable ()
-  print("NYI")
-end
-
-local versionstring = "0.9"
+function TPTMPm.mp ()
+  
+  local versionstring = "0.9"
 
 --TODO's
 --FIGH,STKM,STK2,LIGH need a few more creation adjustments
@@ -90,7 +77,6 @@ local function disconnected(reason)
 	end
 	con.connected = false
 	con.members = {}
-	discordRPC.shutdown()
 end
 local function conSend(cmd,msg,endNull)
 	if not con.connected then return false,"Not connected" end
@@ -158,12 +144,7 @@ local function connectToServer(ip,port,nick)
 	conSend(37,string.char(math.floor(192 + L.selrep/256),L.selrep%256))
 	conSend(38,L.replacemode)
 	conSend(65,string.char(math.floor(L.dcolour/16777216),math.floor(L.dcolour/65536)%256,math.floor(L.dcolour/256)%256,L.dcolour%256))
-	discordRPC.initialize(APPLICATION_ID, true)
 	local now = os.time(os.date("*t"))
-	discordRPC.updatePresence({
-        state = "Online on TPTMP",
-        startTimestamp = now
-	})
 	return true
 end
 --get up to a null (\0)
@@ -1769,8 +1750,13 @@ function TPTMP.enableMultiplayer()
 		gfx.toolTip("", 0, 0, 0, 4)
 	end
 end
+
 TPTMP.con = con
 TPTMP.chatHidden = true
-tpt.register_step(step)
+print(TPTMPm.metadata.uid)
+tmlAPI.util.addStep(TPTMPm.metadata.uid,step)
 tpt.register_mouseclick(mouseclicky)
 tpt.register_keypress(keyclicky)
+end
+
+return TPTMPm

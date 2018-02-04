@@ -4,7 +4,7 @@ local exampmod = {}
 exampmod.metadata = {}
 exampmod.metadata["name"] = "Example Mod"
 exampmod.metadata["id"] = "exampmod"
-exampmod.metadata["requires"] = "tml:1"
+exampmod.metadata["requires"] = "tmlAPI:1"
 
 function exampmod.onLoad()
   
@@ -124,7 +124,7 @@ function exampmod.onLoad()
     tmlAPI.ui.drawList({"test", "12345", "hmmmmm"}, 100, 100, 1000, 1000, mousex, mousey)
   end
   interface.addComponent(button)
-  tmlAPI.util.addStep(uid,step)
+  tmlAPI.util.addStep(exampmod.metadata.uid,step)
 end
 
 function exampmod.onDisable()
