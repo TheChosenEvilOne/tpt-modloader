@@ -14,21 +14,6 @@ local TOML = {
 	strict = true,
 }
 
-TOML.metadata = {}
-TOML.metadata["name"] = "TOML Lua"
-TOML.metadata["id"] = "toml"
-TOML.metadata["requires"] = "tml:1"
-TOML.metadata["type"] = "library"
-
-
-function TOML.onLoad()
-  --do nothing
-end
-
-function TOML.onDisable()
-  --TODO: Implement onDisable
-end
-
 -- converts TOML data into a lua table
 TOML.parse = function(toml, options)
 	options = options or {}
